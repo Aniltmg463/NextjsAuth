@@ -5,7 +5,7 @@ export default function DashboardPage() {
     return <div>Dashboard
         <pre>{JSON.stringify(session, null, 2)}</pre>
         <button onClick={() => signOut({
-            callbackUrl: "/sign-in"
+            callbackUrl: "/sign-in" //callbackURL is typically a parameter or property used in API integrations
         })}>Sign Out</button>
     </div>
 }

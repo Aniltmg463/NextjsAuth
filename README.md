@@ -49,3 +49,32 @@ app/
 
 
 have a special meaning — they are called “Group Routes”.
+
+>app/sign-up/page
+| Part                             | Purpose                               |
+| -------------------------------- | ------------------------------------- |
+| `useForm()`                      | Manages form state                    |
+| `<z.infer<typeof signUpSchema>>` | Adds TypeScript types from Zod schema |
+| `zodResolver(signUpSchema)`      | Connects validation logic             |
+| `defaultValues`                  | Sets initial input values             |
+
+<Form {...form}>
+
+1. This is a wrapper from ShadCN that connects your React Hook Form instance.
+It provides context to all nested form components (FormField, FormItem, etc.).
+The {...form} spreads all properties from useForm(), such as:
+form.control
+form.handleSubmit
+form.register
+form.formState
+
+2. 
+| Element                                  | Purpose                                    |
+| ---------------------------------------- | ------------------------------------------ |
+| `<Form {...form}>`                       | Connects form context to ShadCN components |
+| `onSubmit={form.handleSubmit(onSubmit)}` | Validates & calls your submit handler      |
+| `<FormField>`                            | Binds a form field to React Hook Form      |
+| `<FormLabel>`                            | Displays field name                        |
+| `<FormControl>`                          | Wraps the input with consistent UI         |
+| `<Input {...field}>`                     | The input tied to form state               |
+| `<FormMessage>`                          | Shows validation errors                    |

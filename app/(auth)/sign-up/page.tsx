@@ -1,6 +1,7 @@
 "use client"
 
 import { registerAction } from "@/actions/register-action";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -25,7 +26,10 @@ function SignUpPage() {
     })
 
     const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
+        console.log("signup clicked")
         const response = await registerAction(data)
+        console.log(data)
+        console.log(response)
         if (response.success) {
             toast.success(response.message)
         } else {
